@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\UserProfileController;
 
@@ -87,3 +88,8 @@ Route::redirect('/here', '/there');
 
 Route::view('/welcome', 'welcome');
 Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+Route::resource('photos', PhotoController::class);
+
+Route::resource('photos', PhotoController::class)->only(['index',  'show']);
+Route::resource('photos', PhotoController::class)->except(['create', 'store', 'update', 'destroy']);
